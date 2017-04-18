@@ -28,20 +28,20 @@ router.post('/:glassesId/:userId/new-review', (req, res, next) => {
     user_id
   })
     .then(createdReview => {
-      res.send(createdReview).status(200);
+      res.status(200).send(createdReview)
     })
-    .catch(next);
-});
+    .catch(next)
+})
 
 // Read:
 // get all reviews for a pair of glasses
 router.get('/', (req, res, next) => {
   Review.findAll()
     .then(reviewsArr => {
-      res.send(reviewsArr).status(200);
+      res.status(200).send(reviewsArr)
     })
-    .catch(next);
-});
+    .catch(next)
+})
 
 
 // tbd: get all reviews by a user (if we end up adding a user profile page)

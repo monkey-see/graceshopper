@@ -11,10 +11,10 @@ const router = require('express').Router();
 router.post('/admin/new-glasses', (req, res, next) => {
   Glasses.create(req.body)
     .then(createdGlasses => {
-      res.send(createdGlasses).status(201);
+      res.send(createdGlasses).status(201)
     })
-      .catch(next);
-});
+    .catch(next)
+})
 
 //Read:
 //retrieve glasses by season
@@ -25,18 +25,18 @@ router.get('/:season_id', (req, res, next) => {
     where: {season_id}
   })
     .then(glassesArr => {
-      res.send(glassesArr).status(200);
+      res.status(200).send(glassesArr)
     })
-      .catch(next);
-});
+    .catch(next)
+})
 
 //view all glasses
 router.get('/', (req, res, next) => {
   Glasses.findAll()
     .then(glassesArr => {
-      res.send(glassesArr).status(200);
+      res.status(200).send(glassesArr)
     })
-      .catch(next);
+    .catch(next)
 });
 
 //filter by colour
@@ -47,10 +47,10 @@ router.get('/:color', (req, res, next) => {
     where: {color}
   })
     .then(glassesArr => {
-      res.send(glassesArr).status(200);
+      res.status(200).send(glassesArr)
     })
-      .catch(next);
-});
+    .catch(next)
+})
 
 //filter my material
 router.get('/:material', (req, res, next) => {
@@ -60,10 +60,10 @@ router.get('/:material', (req, res, next) => {
     where: {material}
   })
     .then(glassesArr => {
-      res.send(glassesArr).status(200);
+      res.status(200).send(glassesArr)
     })
-      .catch(next);
-});
+    .catch(next);
+})
 
 //get single glasses
 router.get('/:glassesId', (req, res, next) => {
@@ -71,10 +71,10 @@ router.get('/:glassesId', (req, res, next) => {
 
   Glasses.findById(glassesId)
     .then(foundGlasses => {
-      res.send(foundGlasses).status(200);
+      res.status(200).send(foundGlasses)
     })
-      .catch(next);
-});
+    .catch(next)
+})
 
 //Update:
 //update price on glasses
@@ -87,11 +87,11 @@ router.put('/admin/:glassesId', (req, res, next) => {
     .then(foundGlasses => {
       return foundGlasses.update(req.body)
     })
-      .then(() => {
-        res.sendStatus(200);
-      })
-        .catch(next);
-});
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch(next)
+})
 
 //Delete:
 //delete whole glasses instance
@@ -102,10 +102,10 @@ router.delete('/admin/:glassesId', (req, res, next) => {
     .then(foundGlasses => {
       return foundGlasses.destroy()
     })
-      .then(() => {
-        res.sendStatus(200);
-      })
-        .catch(next);
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(next);
 });
 
 module.exports = router;

@@ -10,22 +10,20 @@ const router = require('express').Router();
 router.post('/admin/new', (req, res, next) => {
   Season.create(req.body)
     .then(createdSeason => {
-      res.send(createdSeason).status(201);
+      res.status(201).send(createdSeason)
     })
-    .catch(next);
+    .catch(next)
 })
 
 // Read:
 // get all seasons (drop-down menu)
 
 router.get('/', (req, res, next) => {
-
-
   Season.findAll()
     .then(seasonArr => {
-      res.send(seasonArr).status(200);
+      res.status(200).send(seasonArr)
     })
-    .catch(next);
+    .catch(next)
 })
 
 // get one season
@@ -34,9 +32,9 @@ router.get('/:seasonId', (req, res, next) => {
 
   Season.findById(seasonId)
     .then(foundSeason => {
-      res.send(foundSeason).status(200);
+      res.status(200).send(foundSeason)
     })
-    .catch(next);
+    .catch(next)
 })
 
 // Update:
@@ -49,12 +47,12 @@ router.delete('/:seasonId', (req, res, next) => {
 
   Season.findById(seasonId)
     .then(foundSeason => {
-      return foundSeason.destroy();
+      return foundSeason.destroy()
     })
     .then(() => {
-      res.sendStatus(200);
+      res.sendStatus(200)
     })
-    .catch(next);
+    .catch(next)
 
 })
 
