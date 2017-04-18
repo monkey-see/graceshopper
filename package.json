@@ -1,7 +1,7 @@
 {
   "name": "monkey-see",
   "version": "0.0.1",
-  "description": "A happy little skeleton.",
+  "description": "A happy little monkey.",
   "main": "index.js",
   "engines": {
     "node": ">= 7.0.0"
