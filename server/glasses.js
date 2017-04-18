@@ -4,7 +4,7 @@ const db = require('APP/db');
 const Glasses = db.model('glasses');
 const router = require('express').Router();
 
-const {mustBeLoggedIn, forbidden} = require('./auth.filters')
+
 
 //Create:
 //add glasses to database
@@ -18,11 +18,11 @@ router.post('/admin/new-glasses', (req, res, next) => {
 
 //Read:
 //retrieve glasses by season
-router.get('/:seasonId', (req, res, next) => {
-  const seasonId = req.params.seasonId;
+router.get('/:season_id', (req, res, next) => {
+  const season_id = req.params.season_id;
 
   Glasses.findAll({
-    where: {seasonId}
+    where: {season_id}
   })
     .then(glassesArr => {
       res.send(glassesArr).status(200);
@@ -85,10 +85,10 @@ router.put('/admin/:glassesId', (req, res, next) => {
 
   Glasses.findById(glassesId)
     .then(foundGlasses => {
-      foundGlasses.update(req.body)
+      return foundGlasses.update(req.body)
     })
-      .then(updatedGlasses => {
-        res.send(updatedGlasses).status(200);
+      .then(() => {
+        res.sendStatus(200);
       })
         .catch(next);
 });
@@ -107,3 +107,5 @@ router.delete('/admin/:glassesId', (req, res, next) => {
       })
         .catch(next);
 });
+
+module.exports = router;
