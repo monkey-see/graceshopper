@@ -9,8 +9,8 @@ const router = require('express').Router();
 router.param('glassesId', (req, res, next, glassesId) => {
   Glasses.findById(glassesId)
     .then(foundGlasses => {
-     req.glasses = foundGlasses;
-     next()
+      req.glasses = foundGlasses;
+      next()
     })
     .catch(next);
 });
@@ -18,16 +18,14 @@ router.param('glassesId', (req, res, next, glassesId) => {
 // Create:
 // create a review
 
-router.post('/:glassesId/:userId/new-review', (req, res, next) => {
-  const glass_id = req.params.glassesId;
-  const user_id = req.params.userId;
+router.post('/', (req, res, next) => {
   Review.create({
-    text,
-    rating,
-    glass_id,
-    user_id
+    text: req.body.text,
+    rating: req.body.rating,
   })
     .then(createdReview => {
+      createdReview.setUser(req.body.userId)
+      createdReview.setGlass(req.body.glassesId)
       res.status(200).send(createdReview)
     })
     .catch(next)

@@ -38,8 +38,13 @@ module.exports = require('express').Router()
     })
   .post('/',
     (req, res, next) =>
-      Order.create(req.body)
-        .then(order => res.status(201).json(order))
+      Order.create({
+        glasses: req.body.glasses
+      })
+        .then(createdOrder => {
+          createdOrder.setUser(req.body.userId)
+          res.status(201).json(createdOrder)
+        })
         .catch(next))
   .get('/:id',
     // mustBeLoggedIn,

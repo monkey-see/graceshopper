@@ -18,7 +18,7 @@ router.post('/admin/new-glasses', (req, res, next) => {
 
 //Read:
 //retrieve glasses by season
-router.get('/:season_id', (req, res, next) => {
+router.get('/season/:season_id', (req, res, next) => {
   const season_id = req.params.season_id;
 
   Glasses.findAll({
@@ -40,7 +40,7 @@ router.get('/', (req, res, next) => {
 });
 
 //filter by colour
-router.get('/:color', (req, res, next) => {
+router.get('/color/:color', (req, res, next) => {
   const color = req.params.color;
 
   Glasses.findAll({
@@ -53,7 +53,7 @@ router.get('/:color', (req, res, next) => {
 })
 
 //filter my material
-router.get('/:material', (req, res, next) => {
+router.get('/material/:material', (req, res, next) => {
   const material = req.params.material;
 
   Glasses.findAll({
