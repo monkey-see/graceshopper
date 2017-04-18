@@ -28,7 +28,10 @@ module.exports = db => db.define('glasses', {
   },
   image: {
     type: STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isUrl: true
+    }
   },
   quantity: {
     type: INTEGER,

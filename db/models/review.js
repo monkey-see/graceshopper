@@ -11,7 +11,10 @@ module.exports = db => db.define('review', {
   },
   rating: {
     type: INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isIn: [[1, 2, 3, 4, 5]]
+    }
   }
 });
 
