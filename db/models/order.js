@@ -9,11 +9,11 @@ module.exports = db => db.define('orders', {
   },
   glasses: {
   	type:ARRAY(JSON),
-  	allowNull: falsenode
+  	allowNull: false
   }
 }, { 	
 	getterMethods:{
-		totalPrice :function(){
+		totalPrice: function(){
 			let total = 0;
 			this.glasses.forEach(product =>{
 				total += product.price 
