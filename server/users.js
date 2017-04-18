@@ -21,23 +21,27 @@ module.exports = require('express').Router()
   .post('/',
     (req, res, next) =>
       User.create(req.body)
-      .then(user => res.status(201).json(user))
-      .catch(next))
+        .then(user => res.status(201).json(user))
+        .catch(next))
   .get('/:id',
     // mustBeLoggedIn,
     // selfOnly,
     (req, res, next) =>
       User.findById(req.params.id)
-      .then(user => res.json(user))
-      .catch(next))
+        .then(user => res.json(user))
+        .catch(next))
   .put('/:id',
     // mustBeLoggedIn,
     (req, res, next) =>
-      User.update(req.body, {
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(updatedUser => res.json(updatedUser))
-      .catch(next)
+      User.findById(req.params.id)
+        .then(foundUser => foundUser.update(req.body))
+        .then(updatedUser => res.json(updatedUser))
+        .catch(next)
     )
+  .delete('/:id',
+    (req, res, next) =>
+      User.findById(req.params.id)
+        .then(foundUser => foundUser.destroy())
+        .then(() => res.sendStatus(200))
+        .catch(next)
+      )
