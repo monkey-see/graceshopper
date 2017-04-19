@@ -3,8 +3,8 @@ import React from 'react'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
-import Login from './components/Login'
-import WhoAmI from './components/WhoAmI'
+import Login from './Login'
+import WhoAmI from './WhoAmI'
 
 class Layout extends React.Component {
   constructor(props) {

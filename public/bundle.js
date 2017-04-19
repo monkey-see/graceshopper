@@ -14036,11 +14036,11 @@ var _reactDom = __webpack_require__(140);
 
 var _reactRedux = __webpack_require__(49);
 
-var _Login = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/Login\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var _Login = __webpack_require__(136);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _WhoAmI = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/WhoAmI\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var _WhoAmI = __webpack_require__(138);
 
 var _WhoAmI2 = _interopRequireDefault(_WhoAmI);
 
@@ -14257,13 +14257,13 @@ var Login = exports.Login = function Login(_ref) {
   var login = _ref.login;
   return _react2.default.createElement(
     "form",
-    { onSubmit: function onSubmit(evt) {
+    { className: "navbar-form navbar-right", onSubmit: function onSubmit(evt) {
         evt.preventDefault();
         login(evt.target.username.value, evt.target.password.value);
       } },
-    _react2.default.createElement("input", { name: "username" }),
-    _react2.default.createElement("input", { name: "password", type: "password" }),
-    _react2.default.createElement("input", { type: "submit", value: "Login" })
+    _react2.default.createElement("input", { className: "form-control", placeholder: "Username", name: "username" }),
+    _react2.default.createElement("input", { className: "form-control", placeholder: "Password", name: "password", type: "password" }),
+    _react2.default.createElement("input", { className: "btn btn-default", type: "submit", value: "Login" })
   );
 };
 
@@ -14368,12 +14368,12 @@ var WhoAmI = exports.WhoAmI = function WhoAmI(_ref) {
     { className: "whoami" },
     _react2.default.createElement(
       "span",
-      { className: "whoami-user-name" },
+      { className: "whoami-user-name navbar-text" },
       user && user.name
     ),
     _react2.default.createElement(
       "button",
-      { className: "logout", onClick: logout },
+      { className: "logout btn btn-default navbar-btn form-inline", onClick: logout },
       "Logout"
     )
   );
