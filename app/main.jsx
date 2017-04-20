@@ -8,7 +8,7 @@ import {getSingleGlasses} from './reducers/glasses'
 import store from './store'
 // import GlassesContainer from './containers/GlassesContainer'
 // import SingleSeasonContainer from './containers/SingleSeasonContainer'
-import SingleGlasses from './components/SingleGlasses'
+import SingleGlassesContainer from './components/SingleGlassesContainer'
 // import SearchResultsContainer from './containers/SearchResultsContainer'
 // import CartContainer from './containers/CartContainer'
 // import CheckoutContainer from './containers/CheckoutContainer'
@@ -35,9 +35,9 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Layout}>
-        <Route path="/glasses/:glassesId" component={SingleGlasses}
+        <Route path="/glasses/:glassesId" component={SingleGlassesContainer}
           onEnter={state => store.dispatch(getSingleGlasses(state.params.glassesId))}/>
-        {/*<Route path="/glasses" component={GlassesContainer} />
+        {/*
         <Route path="/glasses/season/:seasonId" component={SingleSeasonContainer} />
         <Route path="/results" component={SearchResultsContainer} />
         <Route path="/cart" component={CartContainer} />
