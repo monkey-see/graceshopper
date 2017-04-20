@@ -2,12 +2,13 @@
 import React from 'react'
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
 import {render} from 'react-dom'
-import {connect, Provider} from 'react-redux'
+import {connect, Provider, onEnter} from 'react-redux'
+import {getSingleGlasses} from './reducers/glasses'
 
 import store from './store'
 // import GlassesContainer from './containers/GlassesContainer'
 // import SingleSeasonContainer from './containers/SingleSeasonContainer'
-// import SingleGlassesContainer from './containers/SingleGlassesContainer'
+import SingleGlasses from './components/SingleGlasses'
 // import SearchResultsContainer from './containers/SearchResultsContainer'
 // import CartContainer from './containers/CartContainer'
 // import CheckoutContainer from './containers/CheckoutContainer'
@@ -34,9 +35,10 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Layout}>
+        <Route path="/glasses/:glassesId" component={SingleGlasses}
+          onEnter={state => store.dispatch(getSingleGlasses(state.params.glassesId))}/>
         {/*<Route path="/glasses" component={GlassesContainer} />
         <Route path="/glasses/season/:seasonId" component={SingleSeasonContainer} />
-        <Route path="/glasses/:glassesId" component={SingleGlassesContainer} />
         <Route path="/results" component={SearchResultsContainer} />
         <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={CheckoutContainer} />

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const defaultState = {
-  glasses: [],
+  allGlasses: [],
   selectedGlasses: {}
 }
 
@@ -11,7 +11,7 @@ const reducer = (state=defaultState, action) => {
 
   switch (action.type) {
   case FETCH_ALL_GLASSES:
-    newState.glasses = action.glasses
+    newState.allGlasses = action.allGlasses
     break
 
   case FETCH_SINGLE_GLASSES:
@@ -25,11 +25,9 @@ const reducer = (state=defaultState, action) => {
   return newState
 }
 
-
-
 const FETCH_ALL_GLASSES = 'FETCH_ALL_GLASSES'
-export const fetchAllGlasses = glasses => ({
-  type: FETCH_ALL_GLASSES, glasses
+export const fetchAllGlasses = allGlasses => ({
+  type: FETCH_ALL_GLASSES, allGlasses
 })
 
 const FETCH_SINGLE_GLASSES = 'FETCH_SINGLE_GLASSES'
@@ -37,16 +35,17 @@ export const fetchSingleGlasses = selectedGlasses => ({
   type: FETCH_SINGLE_GLASSES, selectedGlasses
 })
 
+
 export const getGlasses = () =>
   dispatch =>
     axios.get('/api/glasses')
-      .then((glasses) => dispatch(fetchAllGlasses(glasses)))
+      .then((glasses) => dispatch(fetchAllGlasses(glasses.data)))
       .catch(console.error)
 
 export const getSingleGlasses = (glassesId) =>
   dispatch =>
     axios.get(`/api/glasses/${glassesId}`)
-      .then((selectedGlasses) => dispatch(fetchSingleGlasses(selectedGlasses)))
+      .then((selectedGlasses) => dispatch(fetchSingleGlasses(selectedGlasses.data)))
       .catch(console.error)
 
 export default reducer
