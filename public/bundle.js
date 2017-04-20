@@ -14312,7 +14312,7 @@ var Layout = function (_React$Component) {
               ),
               _react2.default.createElement(
                 'a',
-                { className: 'navbar-brand', href: '#' },
+                { className: 'navbar-brand', href: '/' },
                 'Monkey See'
               )
             ),
@@ -14582,174 +14582,8 @@ exports.default = (0, _reactRedux.connect)(function mapStateToProps(state) {
 })(SingleGlasses);
 
 /***/ }),
-/* 144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(38);
-
-var _reactRouter = __webpack_require__(39);
-
-var _reactRedux = __webpack_require__(22);
-
-var _seasons = __webpack_require__(88);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SeasonsContainer = function (_React$Component) {
-  _inherits(SeasonsContainer, _React$Component);
-
-  function SeasonsContainer() {
-    _classCallCheck(this, SeasonsContainer);
-
-    return _possibleConstructorReturn(this, (SeasonsContainer.__proto__ || Object.getPrototypeOf(SeasonsContainer)).apply(this, arguments));
-  }
-
-  _createClass(SeasonsContainer, [{
-    key: 'handleClick',
-    value: function handleClick(evt) {
-      this.props.setSeason(evt.target.getAttribute('data-id'));
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          _reactRouter.Link,
-          { 'data-id': '1', to: '/glasses/season/1', onClick: this.handleClick },
-          'Winter'
-        ),
-        _react2.default.createElement(
-          _reactRouter.Link,
-          { 'data-id': '2', to: '/glasses/season/2', onClick: this.handleClick },
-          'Spring'
-        ),
-        _react2.default.createElement(
-          _reactRouter.Link,
-          { 'data-id': '3', to: '/glasses/season/3', onClick: this.handleClick },
-          'Summer'
-        ),
-        _react2.default.createElement(
-          _reactRouter.Link,
-          { 'data-id': '4', to: '/glasses/season/4', onClick: this.handleClick },
-          'Fall'
-        )
-      );
-    }
-  }]);
-
-  return SeasonsContainer;
-}(_react2.default.Component);
-
-exports.default = (0, _reactRedux.connect)(function mapStateToProps(_ref) {
-  var glasses = _ref.glasses;
-
-  return { glasses: glasses };
-}, function mapDispatchToProps(dispatch) {
-  return {
-    setSeason: function setSeason(seasonId) {
-      dispatch((0, _seasons.setSeason)(seasonId));
-    }
-  };
-})(SeasonsContainer);
-
-/***/ }),
-/* 145 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(38);
-
-var _reactRouter = __webpack_require__(39);
-
-var _reactRedux = __webpack_require__(22);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SingleSeasonContainer = function (_React$Component) {
-  _inherits(SingleSeasonContainer, _React$Component);
-
-  function SingleSeasonContainer() {
-    _classCallCheck(this, SingleSeasonContainer);
-
-    return _possibleConstructorReturn(this, (SingleSeasonContainer.__proto__ || Object.getPrototypeOf(SingleSeasonContainer)).apply(this, arguments));
-  }
-
-  _createClass(SingleSeasonContainer, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var filtered = this.props.glasses.allGlasses.filter(function (glasses) {
-        return glasses.season_id === +_this2.props.selectedSeason;
-      });
-      return _react2.default.createElement(
-        'div',
-        null,
-        filtered.map(function (glasses) {
-          return _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-              _reactRouter.Link,
-              { to: '/glasses/' + glasses.id },
-              glasses.name
-            )
-          );
-        })
-      );
-    }
-  }]);
-
-  return SingleSeasonContainer;
-}(_react2.default.Component);
-
-exports.default = (0, _reactRedux.connect)(function mapStateToProps(_ref) {
-  var glasses = _ref.glasses,
-      selectedSeason = _ref.selectedSeason;
-
-  return { glasses: glasses, selectedSeason: selectedSeason };
-})(SingleSeasonContainer);
-
-/***/ }),
+/* 144 */,
+/* 145 */,
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15642,6 +15476,8 @@ var _reactRedux = __webpack_require__(22);
 
 var _glasses = __webpack_require__(82);
 
+var _seasons = __webpack_require__(88);
+
 var _store = __webpack_require__(146);
 
 var _store2 = _interopRequireDefault(_store);
@@ -15650,11 +15486,11 @@ var _SingleGlassesContainer = __webpack_require__(143);
 
 var _SingleGlassesContainer2 = _interopRequireDefault(_SingleGlassesContainer);
 
-var _SeasonsContainer = __webpack_require__(144);
+var _SeasonsContainer = __webpack_require__(325);
 
 var _SeasonsContainer2 = _interopRequireDefault(_SeasonsContainer);
 
-var _SingleSeasonContainer = __webpack_require__(145);
+var _SingleSeasonContainer = __webpack_require__(326);
 
 var _SingleSeasonContainer2 = _interopRequireDefault(_SingleSeasonContainer);
 
@@ -15701,10 +15537,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     { history: _reactRouter.browserHistory },
     _react2.default.createElement(
       _reactRouter.Route,
-      { path: '/', component: _Layout2.default },
+      { path: '/', component: _Layout2.default, onEnter: function onEnter() {
+          return _store2.default.dispatch((0, _glasses.getGlasses)());
+        } },
       _react2.default.createElement(_reactRouter.Route, { path: '/glasses/:glassesId', component: _SingleGlassesContainer2.default,
-        onEnter: function onEnter(state) {
-          return _store2.default.dispatch((0, _glasses.getSingleGlasses)(state.params.glassesId));
+        onEnter: function onEnter(routerState) {
+          return _store2.default.dispatch((0, _glasses.getSingleGlasses)(routerState.params.glassesId));
+        } }),
+      _react2.default.createElement(_reactRouter.Route, { path: '/glasses/season/:seasonId', component: _SingleSeasonContainer2.default,
+        onEnter: function onEnter(routerState) {
+          return _store2.default.dispatch((0, _seasons.setSeason)(routerState.params.seasonId));
         } }),
       _react2.default.createElement(_reactRouter.IndexRoute, { component: _SeasonsContainer2.default })
     ),
@@ -32985,6 +32827,148 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(38);
+
+var _reactRouter = __webpack_require__(39);
+
+var _reactRedux = __webpack_require__(22);
+
+var _seasons = __webpack_require__(88);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function SeasonsContainer(props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      _reactRouter.Link,
+      { 'data-id': '1', to: '/glasses/season/1' },
+      'Winter'
+    ),
+    _react2.default.createElement(
+      _reactRouter.Link,
+      { 'data-id': '2', to: '/glasses/season/2' },
+      'Spring'
+    ),
+    _react2.default.createElement(
+      _reactRouter.Link,
+      { 'data-id': '3', to: '/glasses/season/3' },
+      'Summer'
+    ),
+    _react2.default.createElement(
+      _reactRouter.Link,
+      { 'data-id': '4', to: '/glasses/season/4' },
+      'Fall'
+    )
+  );
+}
+
+exports.default = (0, _reactRedux.connect)(function mapStateToProps(_ref) {
+  var glasses = _ref.glasses;
+
+  return { glasses: glasses };
+}, function mapDispatchToProps(dispatch) {
+  return {};
+})(SeasonsContainer);
+
+/***/ }),
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(38);
+
+var _reactRouter = __webpack_require__(39);
+
+var _reactRedux = __webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SingleSeasonContainer = function (_React$Component) {
+  _inherits(SingleSeasonContainer, _React$Component);
+
+  function SingleSeasonContainer() {
+    _classCallCheck(this, SingleSeasonContainer);
+
+    return _possibleConstructorReturn(this, (SingleSeasonContainer.__proto__ || Object.getPrototypeOf(SingleSeasonContainer)).apply(this, arguments));
+  }
+
+  _createClass(SingleSeasonContainer, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      console.log(this.props);
+      var filtered = this.props.glasses.allGlasses.filter(function (glasses) {
+        return glasses.season_id === +_this2.props.selectedSeason;
+      });
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'p',
+          null,
+          'test'
+        ),
+        filtered && filtered.map(function (glasses) {
+          return _react2.default.createElement(
+            'div',
+            { key: glasses.id },
+            _react2.default.createElement(
+              _reactRouter.Link,
+              { to: '/glasses/' + glasses.id },
+              glasses.name
+            )
+          );
+        })
+      );
+    }
+  }]);
+
+  return SingleSeasonContainer;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRedux.connect)(function mapStateToProps(_ref) {
+  var glasses = _ref.glasses,
+      selectedSeason = _ref.selectedSeason;
+
+  return { glasses: glasses, selectedSeason: selectedSeason };
+})(SingleSeasonContainer);
 
 /***/ })
 /******/ ]);

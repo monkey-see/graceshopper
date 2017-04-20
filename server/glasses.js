@@ -68,7 +68,6 @@ router.get('/material/:material', (req, res, next) => {
 //get single glasses
 router.get('/:glassesId', (req, res, next) => {
   const glassesId = req.params.glassesId;
-
   Glasses.findById(glassesId)
     .then(foundGlasses => {
       res.status(200).send(foundGlasses)

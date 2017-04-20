@@ -7,13 +7,15 @@ import {connect} from 'react-redux'
 
 class SingleSeasonContainer extends React.Component {
   render() {
+    console.log(this.props)
     const filtered = this.props.glasses.allGlasses.filter(glasses => (glasses.season_id === +this.props.selectedSeason))
     return (
       <div>
+        <p>test</p>
         {
-          filtered.map(glasses => {
+          filtered && filtered.map(glasses => {
             return (
-              <div>
+              <div key={glasses.id}>
                 <Link to={`/glasses/${glasses.id}`}>{glasses.name}</Link>
               </div>
             )
