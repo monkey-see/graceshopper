@@ -26,6 +26,7 @@ module.exports = require('express').Router()
       Order.findAll()
         .then(allOrders => res.json(allOrders))
         .catch(next)
+        // JM/SBW - kill dead code
         // } else {
         //   Order.findAll({
         //     where: {
@@ -53,6 +54,7 @@ module.exports = require('express').Router()
       Order.findById(req.params.id, {include: [ User ]})
         .then(order => res.json(order))
         .catch(next))
+  // JM/SBW - restful route issue 
   .get('/user/:userId',
     (req, res, next) => {
       Order.findAll({

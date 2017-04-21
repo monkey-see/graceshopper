@@ -42,3 +42,4 @@ describe('/api/orders', () => {
       )
     )
 })
+// JM/SBW - testing auth routes ONLY IF YOU HAVE TIME  https://medium.com/@bill_broughton/testing-with-authenticated-routes-in-express-6fa9c4c335ca

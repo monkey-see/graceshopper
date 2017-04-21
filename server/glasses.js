@@ -5,9 +5,13 @@ const Glasses = db.model('glasses');
 const router = require('express').Router();
 
 
+// JM/SBW test your models! much easier
 
 //Create:
 //add glasses to database
+// JM/SBW - RESTful routes, so '/' should create glasses
+// include some kind of isAdmin middleware to check for admin access
+// toastr (if you have time)
 router.post('/admin/new-glasses', (req, res, next) => {
   Glasses.create(req.body)
     .then(createdGlasses => {
@@ -18,6 +22,7 @@ router.post('/admin/new-glasses', (req, res, next) => {
 
 //Read:
 //retrieve glasses by season
+// JM/SBW - season/:season_id/glasses
 router.get('/season/:season_id', (req, res, next) => {
   const season_id = req.params.season_id;
 
@@ -40,6 +45,7 @@ router.get('/', (req, res, next) => {
 });
 
 //filter by colour
+// // JM/SBW - perhaps use query params?
 router.get('/color/:color', (req, res, next) => {
   const color = req.params.color;
 
@@ -53,6 +59,7 @@ router.get('/color/:color', (req, res, next) => {
 })
 
 //filter my material
+// JM/SBW - perhaps use query params?
 router.get('/material/:material', (req, res, next) => {
   const material = req.params.material;
 
@@ -79,6 +86,7 @@ router.get('/:glassesId', (req, res, next) => {
 //update price on glasses
 //update colour/material
 //update stock
+// JM/SBW - same as above, just PUT to /:id with admin middleware
 router.put('/admin/:glassesId', (req, res, next) => {
   const glassesId = req.params.glassesId;
 
@@ -94,6 +102,7 @@ router.put('/admin/:glassesId', (req, res, next) => {
 
 //Delete:
 //delete whole glasses instance
+// JM/SBW - same as above, just DELETE to /:id with admin middleware
 router.delete('/admin/:glassesId', (req, res, next) => {
   const glassesId = req.params.glassesId;
 
