@@ -30,11 +30,14 @@ module.exports = require('express').Router()
     })
   .post('/',
     (req, res, next) =>
-      Order.create({
-        glasses: req.body.glasses
+      Order.findOrCreate({
+        where: {
+          user_id: req.user.id,
+          status: 'in-progress'
+        }
       })
         .then(createdOrder => {
-          createdOrder.setUser(req.body.userId)
+          createdOrder.setGlass(req.body.glassesId)
           res.status(201).json(createdOrder)
         })
         .catch(next))

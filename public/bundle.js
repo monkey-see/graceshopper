@@ -14633,6 +14633,11 @@ function SingleGlasses(props) {
       'h3',
       null,
       props.selectedGlasses.quantity
+    ),
+    _react2.default.createElement(
+      'button',
+      { className: 'btn btn-success' },
+      'Add to Cart'
     )
   );
 }

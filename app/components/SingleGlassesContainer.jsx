@@ -11,6 +11,7 @@ function SingleGlasses(props) {
       <h3>{props.selectedGlasses.price}</h3>
       <h3>{props.selectedGlasses.description}</h3>
       <h3>{props.selectedGlasses.quantity}</h3>
+      <button className="btn btn-success" >Add to Cart</button>
     </div>
   )
 }
