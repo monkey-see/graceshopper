@@ -4,11 +4,12 @@
 const bcrypt = require('bcryptjs')
     , {STRING, VIRTUAL, FLOAT, TEXT, INTEGER} = require('sequelize')
 
-
+// JM/SBW - in future, it's nice to keep models as a simple singular word
 module.exports = db => db.define('glasses', {
   name: {
     type: STRING,
     allowNull: false
+    // JM/SBW - consider notEmpty?
   },
   color: {
     type: STRING,
@@ -19,6 +20,7 @@ module.exports = db => db.define('glasses', {
     allowNull: false
   },
   price: {
+    // // JM/SBW - consider integer due to JS weirdness?
     type: FLOAT,
     allowNull: false
   },
@@ -37,6 +39,7 @@ module.exports = db => db.define('glasses', {
     type: INTEGER,
     allowNull: false
   }
+  // JM/SBW - maybe add instance mehtod to get avg review?
 });
 
 module.exports.associations = (Glasses, {Season, Review}) => {
