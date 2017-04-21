@@ -13,6 +13,7 @@ function seedEverything() {
 
   seeded.orders = orders(seeded)
   seeded.reviews = reviews(seeded)
+  seeded.GlassesOrders = glassesOrdersTable(seeded)
 
   return Promise.props(seeded)
 }
@@ -193,11 +194,11 @@ const glasses = seed(Glasses, {
 const orders = seed(Order,
   ({users}) => ({
     order1: {
-      status: 'created',
+      status: 'in-progress',
       user_id: users.marcos.id
     },
     order2: {
-      status: 'pending',
+      status: 'shipped',
       user_id: users.user.id
     }
   })
@@ -229,16 +230,24 @@ const reviews = seed(Review,
 const glassesOrdersTable = seed(GlassesOrders,
   ({orders, glasses}) => ({
     association1: {
-      order_id: 1,
-      glass_id: 4
+      order_id: orders.order1.id,
+      glass_id: glasses.omri.id
     },
     association2: {
-      order_id: 1,
-      glass_id: 9
+      order_id: orders.order1.id,
+      glass_id: glasses.sam.id
     },
     association3: {
-      order_id: 2,
-      glass_id: 11
+      order_id: orders.order2.id,
+      glass_id: glasses.john.id
+    },
+    association4: {
+      order_id: orders.order1.id,
+      glass_id: glasses.daniel.id
+    },
+    association5: {
+      order_id: orders.order1.id,
+      glass_id: glasses.pim.id
     }
   })
 )

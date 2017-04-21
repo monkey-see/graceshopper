@@ -82,3 +82,12 @@ module.exports = require('express').Router()
         .then(updatedOrder => res.json(updatedOrder))
         .catch(next)
     )
+  .get('/:id/pricetest',
+    (req, res, next) =>
+      Order.findById(req.params.id)
+        .then(foundOrder => {
+          foundOrder.totalPrice()
+            .then(price => res.send(price.toString()))
+        })
+        .catch(next)
+    )

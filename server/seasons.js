@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db');
-const Season = db.model('season');
+const Season = db.model('seasons');
 const router = require('express').Router();
 
 // Create:

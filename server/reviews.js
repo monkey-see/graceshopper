@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db');
-const Review = db.model('review');
+const Review = db.model('reviews');
 const User = db.model('users');
 const Glasses = db.model('glasses');
 const router = require('express').Router();
