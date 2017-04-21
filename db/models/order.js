@@ -12,7 +12,6 @@ module.exports = db => db.define('orders', {
     totalPrice: function() {
       return this.getGlasses()
         .then(glasses => glasses.reduce((totalPrice, glassesInstance) => {
-          console.log('totalPrice', totalPrice, 'glassesInstance.price', glassesInstance.price)
           return totalPrice + glassesInstance.price
         }, 0))
         .catch(console.error)

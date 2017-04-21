@@ -47,8 +47,8 @@ router.get('/', (req, res, next) => {
 // Update:
 // edit a review by reviewID
 
-router.put('/:reviewId', (req, res, next) => {
-  const reviewId = req.params.reviewId;
+router.put('/:id', (req, res, next) => {
+  const reviewId = req.params.id;
   Review.findById(reviewId)
     .then(foundReview => {
       return foundReview.update(req.body)
@@ -62,8 +62,8 @@ router.put('/:reviewId', (req, res, next) => {
 // Delete:
 // delete a review
 
-router.delete('/:reviewId', (req, res, next) => {
-  const reviewId = req.params.reviewId;
+router.delete('/:id', (req, res, next) => {
+  const reviewId = req.params.id;
   Review.findById(reviewId)
     .then(foundReview => {
       return foundReview.destroy();

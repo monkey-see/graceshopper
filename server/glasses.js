@@ -8,7 +8,7 @@ const router = require('express').Router();
 
 //Create:
 //add glasses to database
-router.post('/admin/new-glasses', (req, res, next) => {
+router.post('/', (req, res, next) => {
   Glasses.create(req.body)
     .then(createdGlasses => {
       res.send(createdGlasses).status(201)
@@ -16,58 +16,20 @@ router.post('/admin/new-glasses', (req, res, next) => {
     .catch(next)
 })
 
-//Read:
-//retrieve glasses by season
-router.get('/season/:season_id', (req, res, next) => {
-  const season_id = req.params.season_id;
-
-  Glasses.findAll({
-    where: {season_id}
-  })
-    .then(glassesArr => {
-      res.status(200).send(glassesArr)
-    })
-    .catch(next)
-})
-
 //view all glasses
 router.get('/', (req, res, next) => {
-  Glasses.findAll()
+  Glasses.findAll({
+    where: req.query
+  })
     .then(glassesArr => {
       res.status(200).send(glassesArr)
     })
     .catch(next)
 });
 
-//filter by colour
-router.get('/color/:color', (req, res, next) => {
-  const color = req.params.color;
-
-  Glasses.findAll({
-    where: {color}
-  })
-    .then(glassesArr => {
-      res.status(200).send(glassesArr)
-    })
-    .catch(next)
-})
-
-//filter my material
-router.get('/material/:material', (req, res, next) => {
-  const material = req.params.material;
-
-  Glasses.findAll({
-    where: {material}
-  })
-    .then(glassesArr => {
-      res.status(200).send(glassesArr)
-    })
-    .catch(next);
-})
-
 //get single glasses
-router.get('/:glassesId', (req, res, next) => {
-  const glassesId = req.params.glassesId;
+router.get('/:id', (req, res, next) => {
+  const glassesId = req.params.id;
   Glasses.findById(glassesId)
     .then(foundGlasses => {
       res.status(200).send(foundGlasses)
@@ -79,8 +41,8 @@ router.get('/:glassesId', (req, res, next) => {
 //update price on glasses
 //update colour/material
 //update stock
-router.put('/admin/:glassesId', (req, res, next) => {
-  const glassesId = req.params.glassesId;
+router.put('/:id', (req, res, next) => {
+  const glassesId = req.params.id;
 
   Glasses.findById(glassesId)
     .then(foundGlasses => {
@@ -94,8 +56,8 @@ router.put('/admin/:glassesId', (req, res, next) => {
 
 //Delete:
 //delete whole glasses instance
-router.delete('/admin/:glassesId', (req, res, next) => {
-  const glassesId = req.params.glassesId;
+router.delete('/:id', (req, res, next) => {
+  const glassesId = req.params.id;
 
   Glasses.findById(glassesId)
     .then(foundGlasses => {

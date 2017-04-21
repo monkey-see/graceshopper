@@ -44,13 +44,18 @@ module.exports = db => db.define('glasses', {
   instanceMethods: {
     averageRating: function() {
       return this.getReviews()
-        .then(reviews => reviews)
+        .then(reviews => {
+          const totalReviewCount = reviews.reduce((totalReviewCount, reviewInstance) => {
+            return totalReviewCount + reviewInstance.rating
+          }, 0)
+          return totalReviewCount / reviews.length
+        })
     }
   }
-});
+})
 
 module.exports.associations = (Glasses, {Season, Review, Order}) => {
   Glasses.belongsTo(Season)
   Glasses.hasMany(Review)
   Glasses.belongsToMany(Order, {through: 'GlassesOrders'})
-};
+}

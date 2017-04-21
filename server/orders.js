@@ -22,19 +22,11 @@ module.exports = require('express').Router()
   .get('/',
     // mustBeLoggedIn,
     (req, res, next) => {
-      // if (req.user.admin) {
-      Order.findAll()
+      Order.findAll({
+        where: req.query
+      })
         .then(allOrders => res.json(allOrders))
         .catch(next)
-        // } else {
-        //   Order.findAll({
-        //     where: {
-        //       user_id: req.user.id
-        //     }
-        //   })
-        //   .then(userOrders => res.json(userOrders))
-        //   .catch(next)
-        // }
     })
   .post('/',
     (req, res, next) =>
@@ -53,41 +45,11 @@ module.exports = require('express').Router()
       Order.findById(req.params.id, {include: [ User ]})
         .then(order => res.json(order))
         .catch(next))
-  .get('/user/:userId',
-    (req, res, next) => {
-      Order.findAll({
-        where: {
-          user_id: req.params.userId
-        }
-      })
-        .then(foundOrders => res.json(foundOrders))
-        .catch(next)
-    })
-  .get('/status/:status',
-    // mustBeLoggedIn,
-    (req, res, next) =>
-      Order.findAll({
-        where: {
-          status: req.params.status
-        }
-      })
-        .then(filteredOrders => res.json(filteredOrders))
-        .catch(next)
-    )
   .put('/:id',
     // mustBeLoggedIn,
     (req, res, next) =>
       Order.findById(req.params.id)
         .then(foundOrder => foundOrder.update(req.body))
         .then(updatedOrder => res.json(updatedOrder))
-        .catch(next)
-    )
-  .get('/:id/pricetest',
-    (req, res, next) =>
-      Order.findById(req.params.id)
-        .then(foundOrder => {
-          foundOrder.totalPrice()
-            .then(price => res.send(price.toString()))
-        })
         .catch(next)
     )
