@@ -2,24 +2,27 @@
 
 // bcrypt docs: https://www.npmjs.com/package/bcrypt
 const bcrypt = require('bcryptjs')
-    , {STRING, VIRTUAL, FLOAT, TEXT, INTEGER} = require('sequelize')
+    , {STRING, VIRTUAL, FLOAT, TEXT, INTEGER, ENUM} = require('sequelize')
 
 
 module.exports = db => db.define('glasses', {
   name: {
     type: STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   color: {
     type: STRING,
     allowNull: false
   },
   material: {
-    type: STRING,
+    type: ENUM('acetate', 'metal', 'mixed'),
     allowNull: false
   },
   price: {
-    type: FLOAT,
+    type: INTEGER,
     allowNull: false
   },
   description: {
@@ -36,6 +39,13 @@ module.exports = db => db.define('glasses', {
   quantity: {
     type: INTEGER,
     allowNull: false
+  }
+}, {
+  instanceMethods: {
+    averageRating: function() {
+      return this.getReviews()
+        .then(reviews => reviews)
+    }
   }
 });
 
