@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db')
-    , {User, Season, Glasses, Order, Review, Promise} = db
+    , {User, Season, Glasses, Order, Review, Promise, GlassesOrders} = db
     , {mapValues} = require('lodash')
 
 function seedEverything() {
@@ -194,45 +194,10 @@ const orders = seed(Order,
   ({users}) => ({
     order1: {
       status: 'created',
-      glasses: [{
-        id: 12,
-        name: 'Damon',
-        color: 'multi',
-        material: 'mixed',
-        price: 205,
-        description: `You'll look totally vogue in these specs.`,
-        image: 'http://i.imgur.com/NHnYUPc.png',
-        quantity: 49,
-        season_id: 4,
-        order_quantity: 1
-      }, {
-        id: 9,
-        name: 'Lisa',
-        color: 'brown',
-        material: 'mixed',
-        price: 125,
-        description: `You'll look totally retro in these specs.`,
-        image: 'http://i.imgur.com/Icvi1y4.png',
-        quantity: 106,
-        season_id: 3,
-        order_quantity: 2
-      }],
       user_id: users.marcos.id
     },
     order2: {
       status: 'pending',
-      glasses: [{
-        id: 5,
-        name: 'John',
-        color: 'red',
-        material: 'acetate',
-        price: 100,
-        description: `You'll look totally British in these specs.`,
-        image: 'http://i.imgur.com/dHxKtyq.png',
-        quantity: 84,
-        season_id: 2,
-        order_quantity: 1
-      }],
       user_id: users.user.id
     }
   })
@@ -260,6 +225,24 @@ const reviews = seed(Review,
     }
   })
 )
+
+const glassesOrdersTable = seed(GlassesOrders,
+  ({orders, glasses}) => ({
+    association1: {
+      order_id: 1,
+      glass_id: 4
+    },
+    association2: {
+      order_id: 1,
+      glass_id: 9
+    },
+    association3: {
+      order_id: 2,
+      glass_id: 11
+    }
+  })
+)
+
 // const things = seed(Thing, {
 //   surfing: {name: 'surfing'},
 //   smiting: {name: 'smiting'},

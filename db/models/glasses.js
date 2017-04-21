@@ -39,7 +39,8 @@ module.exports = db => db.define('glasses', {
   }
 });
 
-module.exports.associations = (Glasses, {Season, Review}) => {
-  Glasses.belongsTo(Season);
+module.exports.associations = (Glasses, {Season, Review, Order}) => {
+  Glasses.belongsTo(Season)
   Glasses.hasMany(Review)
+  Glasses.belongsToMany(Order, {through: 'GlassesOrders'})
 };

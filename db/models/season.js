@@ -4,7 +4,7 @@
 const bcrypt = require('bcryptjs')
     , {STRING, VIRTUAL, FLOAT, TEXT, INTEGER} = require('sequelize')
 
-module.exports = db => db.define('season', {
+module.exports = db => db.define('seasons', {
   season: {
     type: STRING,
     allowNull: false

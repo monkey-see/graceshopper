@@ -6,23 +6,18 @@ module.exports = db => db.define('orders', {
   status: {
     type: ENUM('completed', 'pending', 'cancelled', 'created'),
     defaultValue: 'created'
-  },
-  glasses: {
-    type: ARRAY(JSON),
-    allowNull: false
   }
 }, {
-  getterMethods: {
-    totalPrice: function() {
-      let total = 0
-      this.glasses.forEach(product => {
-        total += product.price
-      })
-      return total
-    }
-  }
+  // getterMethods: {
+  //   // totalPrice: function() {
+  //   //   this.glasses.reduce( => {
+  //   //     total += product.price
+  //   //   })
+  //   // }
+  // }
 })
 
-module.exports.associations = (Order, {User}) => {
+module.exports.associations = (Order, {User, Glasses}) => {
   Order.belongsTo(User)
+  Order.belongsToMany(Glasses, {through: 'GlassesOrders'})
 }
