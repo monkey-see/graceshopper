@@ -7,10 +7,10 @@ const Glasses = db.model('glasses');
 const router = require('express').Router();
 
 router.param('glassesId', (req, res, next, glassesId) => {
-  console.log(glassesId,'here')
+  
   Glasses.findById(glassesId)
     .then(foundGlasses => {
-      console.log(foundGlasses,'super cool')
+  
       req.glasses = foundGlasses;
       next()
     })
@@ -26,7 +26,7 @@ router.post('/:glassesId', (req, res, next) => {
     rating: req.body.rating
   })
     .then(createdReview => {
-      console.log('this is the userId',req.body.userId)
+      
       createdReview.setUser(req.body.userId)
       createdReview.setGlass(req.params.glassesId)
       res.status(200).send(createdReview)
