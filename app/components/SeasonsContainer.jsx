@@ -6,8 +6,10 @@ import {connect} from 'react-redux'
 
 import {setSeason} from '../reducers/seasons'
 
+// JM/SBW - at a certain point... reconsider file architecture components vs containers
 
 function SeasonsContainer(props) {
+  // JM/SBW - ideally, not hardcoded. Loop over this
   return (
     <div>
       <Link data-id='1' to="/glasses/season/1">Winter</Link>

@@ -12,6 +12,8 @@ import store from './store'
 import SingleGlassesContainer from './components/SingleGlassesContainer'
 import SeasonsContainer from './components/SeasonsContainer'
 import SingleSeasonContainer from './components/SingleSeasonContainer'
+
+// JM/SBW - kill dead code
 // import SearchResultsContainer from './containers/SearchResultsContainer'
 // import CartContainer from './containers/CartContainer'
 // import CheckoutContainer from './containers/CheckoutContainer'
@@ -38,11 +40,13 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Layout} onEnter={() => {
+        {/* JM/SBW - pull the onEnter things out into separate function*/}
         store.dispatch(getGlasses())
         store.dispatch(createOrderInDB())
       }}>
         <Route path="/glasses/:glassesId" component={SingleGlassesContainer}
           onEnter={routerState => store.dispatch(getSingleGlasses(routerState.params.glassesId))} />
+        {/*JM/SBW - consider seasons/:id/glasses*/}
         <Route path="/glasses/season/:seasonId" component={SingleSeasonContainer}
           onEnter={routerState => store.dispatch(setSeason(routerState.params.seasonId))} />
         {/*

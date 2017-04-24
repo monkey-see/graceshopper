@@ -11,6 +11,8 @@ class Layout extends React.Component {
     super(props)
   }
 
+// JM/SBW - checkout semantic UI if you have time or after project
+
   render() {
     return (
       <div>

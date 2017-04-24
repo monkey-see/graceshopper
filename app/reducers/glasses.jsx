@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// jm/SBW - great pattern for a small app. if you have time consider splitting out into sep files
 const defaultState = {
   allGlasses: [],
   selectedGlasses: {}
@@ -35,7 +36,7 @@ export const fetchSingleGlasses = selectedGlasses => ({
   type: FETCH_SINGLE_GLASSES, selectedGlasses
 })
 
-
+// JM/SBW - great naming, maybe just call this getAllGlasses so it matches getSignleglasses
 export const getGlasses = () =>
   dispatch =>
     axios.get('/api/glasses')
