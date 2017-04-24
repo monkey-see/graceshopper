@@ -7,16 +7,6 @@ module.exports = db => db.define('orders', {
     type: ENUM('in-progress', 'processing', 'cancelled', 'shipped'),
     defaultValue: 'in-progress'
   }
-}, {
-  getterMethods: {
-    totalPrice: function() {
-      return this.getGlasses()
-        .then(glasses => glasses.reduce((totalPrice, glassesInstance) => {
-          return totalPrice + glassesInstance.price
-        }, 0))
-        .catch(console.error)
-    }
-  }
 })
 
 module.exports.associations = (Order, {User, Glasses}) => {

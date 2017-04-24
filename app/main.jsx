@@ -14,6 +14,7 @@ import SeasonsContainer from './components/SeasonsContainer'
 import SingleSeasonContainer from './components/SingleSeasonContainer'
 import CartContainer from './components/CartContainer'
 import CheckoutContainer from './components/CheckoutContainer'
+import Success from './components/Success'
 // import SearchResultsContainer from './containers/SearchResultsContainer'
 // import SignupContainer from './containers/SignupContainer'
 import Layout from './components/Layout'
@@ -47,6 +48,7 @@ render(
           onEnter={routerState => store.dispatch(setSeason(routerState.params.seasonId))} />
         <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={CheckoutContainer} />
+        <Route path="/success" component={Success} />
         {/*
         <Route path="/results" component={SearchResultsContainer} />
         <Route path="/checkout" component={CheckoutContainer} />
