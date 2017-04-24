@@ -33193,7 +33193,32 @@ function CheckoutContainer(props) {
     _react2.default.createElement(
       'div',
       null,
-      props.order.totalPrice()
+      _react2.default.createElement(
+        'h1',
+        null,
+        'Checkout'
+      ),
+      _react2.default.createElement(
+        'ul',
+        null,
+        props.order.glasses && props.order.glasses.map(function (glasses) {
+          return _react2.default.createElement(
+            'li',
+            { key: glasses.id, className: 'list-group-item' },
+            glasses.name,
+            ': $',
+            glasses.price / 100
+          );
+        }),
+        _react2.default.createElement(
+          'li',
+          { className: 'list-group-item' },
+          'Total Price: $',
+          props.order.glasses && props.order.glasses.reduce(function (totalPrice, glasses) {
+            return totalPrice + glasses.price / 100;
+          }, 0)
+        )
+      )
     )
   );
 }
