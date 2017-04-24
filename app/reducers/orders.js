@@ -1,35 +1,48 @@
 import axios from 'axios'
 
-const FETCH_ORDER = 'FETCH_ORDER'
-const ADD_GLASSES_TO_CART = 'ADD_GLASSES_TO_CART'
-const REMOVE_GLASSES_FROM_CART = 'REMOVE_GLASSES_FROM_CART'
-
+const FIND_OR_CREATE_ORDER = 'FIND_OR_CREATE_ORDER'
+const UPDATE_ORDER = 'UPDATE_ORDER'
 
 // sync action creators
+// redundant? difference between createOrder/updateOrder and createOrderInDB/updateOrderInDB
 
-export const fetchOrder = currentOrder => ({
-  type: FETCH_ORDER,
-  currentOrder
+export const createOrder = order => ({
+  type: FIND_OR_CREATE_ORDER,
+  order
 })
 
-
+export const updateOrder = order => ({
+  type: UPDATE_ORDER,
+  order
+})
 
 // async action creators
 
-export const getOrder = (id) => dispatch => {
-  axios.get(`/api/orders/${id}`)
-    .then(currentOrder => currentOrder.data)
-    .then(currentOrder => dispatch(fetchOrder(currentOrder)))
+export const createOrderInDB = () => dispatch => {
+  axios.post(`/api/orders/`)
+    .then(order => order.data)
+    .then(order => dispatch(createOrder(order)))
+    .catch(console.error)
+}
+
+export const updateOrderInDB = (id, glassesIdArr) => dispatch => {
+  axios.put(`/api/orders/${id}`, {glasses: glassesIdArr})
+    .then(order => order.data)
+    .then(order => dispatch(updateOrder(order)))
     .catch(console.error)
 }
 
 // reducer
 
-export const setOrderReducer = (state = {}, action) => {
+const setOrderReducer = (state = {}, action) => {
   switch (action.type) {
-  case FETCH_ORDER:
-    return action.currentOrder
+  case FIND_OR_CREATE_ORDER:
+    return action.order
+  case UPDATE_ORDER:
+    return action.order
   default:
     return state
   }
 }
+
+export default setOrderReducer

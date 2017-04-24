@@ -29,18 +29,23 @@ module.exports = require('express').Router()
         .catch(next)
     })
   .post('/',
-    (req, res, next) =>
-      Order.findOrCreate({
-        where: {
-          user_id: req.user.id,
-          status: 'in-progress'
-        }
-      })
-        .then(createdOrder => {
-          createdOrder.setGlass(req.body.glassesId)
-          res.status(201).json(createdOrder)
+    (req, res, next) => {
+      if (req.user) {
+        Order.findOrCreate({
+          where: {
+            user_id: req.user.id,
+            status: 'in-progress'
+          },
+          include: [Glasses]
         })
-        .catch(next))
+          .then(createdOrder => {
+            res.status(201).json(createdOrder[0])
+          })
+          .catch(next)
+      } else {
+        res.sendStatus(204)
+      }
+    })
   .get('/:id',
     // mustBeLoggedIn,
     // selfOrAdminOrders,
@@ -52,7 +57,12 @@ module.exports = require('express').Router()
     // mustBeLoggedIn,
     (req, res, next) =>
       Order.findById(req.params.id)
-        .then(foundOrder => foundOrder.update(req.body))
+        .then(foundOrder => {
+          return foundOrder.setGlasses(req.body.glasses)
+        })
+        .then(() => {
+          return Order.findById(req.params.id, {include: [Glasses]})
+        })
         .then(updatedOrder => res.json(updatedOrder))
         .catch(next)
     )
