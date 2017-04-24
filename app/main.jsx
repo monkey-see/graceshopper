@@ -12,9 +12,9 @@ import store from './store'
 import SingleGlassesContainer from './components/SingleGlassesContainer'
 import SeasonsContainer from './components/SeasonsContainer'
 import SingleSeasonContainer from './components/SingleSeasonContainer'
+import CartContainer from './components/CartContainer'
+import CheckoutContainer from './components/CheckoutContainer'
 // import SearchResultsContainer from './containers/SearchResultsContainer'
-// import CartContainer from './containers/CartContainer'
-// import CheckoutContainer from './containers/CheckoutContainer'
 // import SignupContainer from './containers/SignupContainer'
 import Layout from './components/Layout'
 import Login from './components/Login'
@@ -45,9 +45,10 @@ render(
           onEnter={routerState => store.dispatch(getSingleGlasses(routerState.params.glassesId))} />
         <Route path="/glasses/season/:seasonId" component={SingleSeasonContainer}
           onEnter={routerState => store.dispatch(setSeason(routerState.params.seasonId))} />
+        <Route path="/cart" component={CartContainer} />
+        <Route path="/checkout" component={CheckoutContainer} />
         {/*
         <Route path="/results" component={SearchResultsContainer} />
-        <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={CheckoutContainer} />
         <Route path="/signup" component={SignupContainer} />
         */}

@@ -55,14 +55,20 @@ module.exports = require('express').Router()
         .catch(next))
   .put('/:id',
     // mustBeLoggedIn,
-    (req, res, next) =>
-      Order.findById(req.params.id)
-        .then(foundOrder => {
-          return foundOrder.setGlasses(req.body.glasses)
-        })
-        .then(() => {
-          return Order.findById(req.params.id, {include: [Glasses]})
-        })
-        .then(updatedOrder => res.json(updatedOrder))
-        .catch(next)
+    (req, res, next) => {
+      if (req.user) {
+        Order.findById(req.params.id)
+          .then(foundOrder => {
+            return foundOrder.setGlasses(req.body.glasses)
+          })
+          .then(() => {
+            return Order.findById(req.params.id, {include: [Glasses]})
+          })
+          .then(updatedOrder => res.json(updatedOrder))
+          .catch(next)
+      } else {
+        res.sendStatus(204)
+      }
+    }
+
     )

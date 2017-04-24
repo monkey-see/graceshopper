@@ -8,7 +8,7 @@ module.exports = db => db.define('orders', {
     defaultValue: 'in-progress'
   }
 }, {
-  instanceMethods: {
+  getterMethods: {
     totalPrice: function() {
       return this.getGlasses()
         .then(glasses => glasses.reduce((totalPrice, glassesInstance) => {
