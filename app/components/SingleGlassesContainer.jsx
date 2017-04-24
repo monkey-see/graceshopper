@@ -1,8 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {updateOrderInDB} from '../reducers/orders'
+import ReviewContainer from './ReviewContainer'
 
 function SingleGlasses(props) {
+  
+
   return (
     <div>
       <h1>{props.selectedGlasses.name}</h1>
@@ -18,7 +21,12 @@ function SingleGlasses(props) {
         const newGlasses = currentGlasses.map(singleGlasses => singleGlasses.id).concat([props.selectedGlasses.id])
         props.updateOrder(props.order.id, newGlasses)
       }}>Add to Cart</button>
+      <div>
+        <ReviewContainer />
+      </div>
+
     </div>
+
   )
 }
 
@@ -34,6 +42,9 @@ export default connect(
     return {
       updateOrder: (orderId, glassesIdArr) => {
         dispatch(updateOrderInDB(orderId, glassesIdArr))
+      },
+      getReviews: (glassesId) => {
+        dispatch(getSingleGlassesReviews(glassesId))
       }
     }
   }
