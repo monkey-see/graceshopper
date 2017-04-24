@@ -14549,6 +14549,8 @@ var _reactDom = __webpack_require__(40);
 
 var _reactRedux = __webpack_require__(16);
 
+var _reactRouter = __webpack_require__(33);
+
 var _Login = __webpack_require__(82);
 
 var _Login2 = _interopRequireDefault(_Login);
@@ -14718,6 +14720,17 @@ var Layout = function (_React$Component) {
                 _react2.default.createElement(
                   'li',
                   null,
+                  _react2.default.createElement(
+                    _reactRouter.Link,
+                    { to: '/cart' },
+                    'Cart (',
+                    this.props.order.glasses ? this.props.order.glasses.length : 0,
+                    ')'
+                  )
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
                   ' ',
                   this.props.user ? _react2.default.createElement(_WhoAmI2.default, null) : _react2.default.createElement(_Login2.default, null),
                   ' '
@@ -14739,7 +14752,10 @@ var Layout = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _reactRedux.connect)(function mapStateToProps(state) {
-  return { user: state.auth };
+  return {
+    user: state.auth,
+    order: state.order
+  };
 }, function mapDispatchToProps() {
   return {};
 })(Layout);
