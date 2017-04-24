@@ -2,6 +2,7 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
+import {Link} from 'react-router'
 
 import Login from './Login'
 import WhoAmI from './WhoAmI'
@@ -49,6 +50,7 @@ class Layout extends React.Component {
                 <button type="submit" className="btn btn-default">Submit</button>
               </form>
               <ul className="nav navbar-nav navbar-right">
+                <li><Link to="/cart">Cart ({this.props.order.glasses ? this.props.order.glasses.length : 0})</Link></li>
                 <li> {this.props.user ? <WhoAmI/> : <Login/>} </li>
               </ul>
             </div>
@@ -63,7 +65,10 @@ class Layout extends React.Component {
 
 export default connect(
   function mapStateToProps(state) {
-    return {user: state.auth}
+    return {
+      user: state.auth,
+      order: state.order
+    }
   },
   function mapDispatchToProps() {
     return {}
