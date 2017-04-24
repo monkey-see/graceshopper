@@ -24,7 +24,6 @@ describe('/api/orders', () => {
           .get(`/api/orders`)
           .expect(200)
           .then(res => {
-            console.log(res.body)
             expect(res.body.length).to.equal(1)
             expect(res.body[0].glasses.length).to.equal(4)
           })

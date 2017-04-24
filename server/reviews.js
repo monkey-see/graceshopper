@@ -20,14 +20,15 @@ router.param('glassesId', (req, res, next, glassesId) => {
 // Create:
 // create a review
 
-router.post('/', (req, res, next) => {
+router.post('/:glassesId', (req, res, next) => {
   Review.create({
     text: req.body.text,
-    rating: req.body.rating,
+    rating: req.body.rating
   })
     .then(createdReview => {
+      console.log('this is the userId',req.body.userId)
       createdReview.setUser(req.body.userId)
-      createdReview.setGlass(req.body.glassesId)
+      createdReview.setGlass(req.params.glassesId)
       res.status(200).send(createdReview)
     })
     .catch(next)
