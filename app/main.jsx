@@ -5,6 +5,7 @@ import {render} from 'react-dom'
 import {connect, Provider, onEnter} from 'react-redux'
 import {getSingleGlasses, getGlasses} from './reducers/glasses'
 import {setSeason} from './reducers/seasons'
+import {createOrderInDB} from './reducers/orders'
 
 import store from './store'
 
@@ -36,7 +37,10 @@ import NotFound from './components/NotFound'
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Layout} onEnter={() => store.dispatch(getGlasses())}>
+      <Route path="/" component={Layout} onEnter={() => {
+        store.dispatch(getGlasses())
+        store.dispatch(createOrderInDB())
+      }}>
         <Route path="/glasses/:glassesId" component={SingleGlassesContainer}
           onEnter={routerState => store.dispatch(getSingleGlasses(routerState.params.glassesId))} />
         <Route path="/glasses/season/:seasonId" component={SingleSeasonContainer}
