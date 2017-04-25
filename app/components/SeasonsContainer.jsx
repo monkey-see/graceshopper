@@ -9,12 +9,18 @@ import {setSeason} from '../reducers/seasons'
 
 function SeasonsContainer(props) {
   return (
-    <div>
-      <Link data-id='1' to="/glasses/season/1">Winter</Link>
-      <Link data-id='2' to="/glasses/season/2">Spring</Link>
-      <Link data-id='3' to="/glasses/season/3">Summer</Link>
-      <Link data-id='4' to="/glasses/season/4">Fall</Link>
-    </div>
+    <div className="container center">
+
+      <div className="row">
+        <Link data-id='1' to="/glasses/season/1"><img style={{opacity: 0.5}} src="https://i.imgur.com/yrlgzRO.png" className="col-sm-6"/></Link>
+        <Link data-id='2' to="/glasses/season/2"><img style={{opacity: 0.5}} src="https://i.imgur.com/u6rPCpR.png" className="col-sm-6"/></Link>
+      </div>
+
+      <div className="row">
+        <Link data-id='3' to="/glasses/season/3"><img style={{opacity: 0.5}} src="https://i.imgur.com/BtMQVle.png" className="col-sm-6"/></Link>
+        <Link data-id='4' to="/glasses/season/4"><img style={{opacity: 0.5}} src="https://i.imgur.com/1QHrjnS.png" className="col-sm-6"/></Link>
+      </div>
+  </div>
   )
 }
 
