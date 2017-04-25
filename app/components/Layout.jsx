@@ -3,6 +3,7 @@ import React from 'react'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 import {Link} from 'react-router'
+import {SearchResultsContainer} from './SearchResultsContainer'
 
 import Login from './Login'
 import WhoAmI from './WhoAmI'
@@ -15,10 +16,10 @@ class Layout extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default" style={{color: '#fff652'}}>
           <div className="container-fluid">
              <img src="https://i.imgur.com/B3tbqwX.png" className="img-responsive center-block"height="300" />
-            <div className="navbar-header" style={{color: '#fff652'}}>
+            <div className="navbar-header" >
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar"></span>
@@ -44,11 +45,11 @@ class Layout extends React.Component {
                   </ul>
                 </li>
               </ul>
-              <form className="navbar-form navbar-left">
+              <form className="navbar-form navbar-left" >
                 <div className="form-group">
-                  <input type="text" className="form-control" placeholder="Search" />
+                  <input type="text" className="form-control" placeholder="Search" name="searchParams"/>
                 </div>
-                <button type="submit" className="btn btn-default">Submit</button>
+                <button type="submit" className="btn btn-default"><Link to="/results">Submit</Link></button>
               </form>
               <ul className="nav navbar-nav navbar-right">
                 <li><Link to="/cart">Cart ({this.props.order.glasses ? this.props.order.glasses.length : 0})</Link></li>
