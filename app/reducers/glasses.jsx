@@ -1,8 +1,13 @@
 import axios from 'axios'
 
+const FETCH_ALL_GLASSES = 'FETCH_ALL_GLASSES'
+const FETCH_SINGLE_GLASSES = 'FETCH_SINGLE_GLASSES'
+const FETCH_SEARCH_GLASSES = 'FETCH_SEARCH_GLASSES'
+
 const defaultState = {
   allGlasses: [],
-  selectedGlasses: {}
+  selectedGlasses: {},
+  searchResultGlasses: []
 }
 
 
@@ -18,6 +23,10 @@ const reducer = (state=defaultState, action) => {
     newState.selectedGlasses = action.selectedGlasses
     break
 
+  case FETCH_SEARCH_GLASSES:
+    newState.searchResultGlasses = action.searchResultGlasses
+    break
+
   default:
     return state
   }
@@ -25,15 +34,18 @@ const reducer = (state=defaultState, action) => {
   return newState
 }
 
-const FETCH_ALL_GLASSES = 'FETCH_ALL_GLASSES'
 export const fetchAllGlasses = allGlasses => ({
   type: FETCH_ALL_GLASSES, allGlasses
 })
 
-const FETCH_SINGLE_GLASSES = 'FETCH_SINGLE_GLASSES'
 export const fetchSingleGlasses = selectedGlasses => ({
   type: FETCH_SINGLE_GLASSES, selectedGlasses
 })
+
+export const fetchSearchGlasses = searchResultGlasses => ({
+  type: FETCH_SEARCH_GLASSES, searchResultGlasses
+})
+
 
 
 export const getGlasses = () =>
@@ -47,5 +59,13 @@ export const getSingleGlasses = (glassesId) =>
     axios.get(`/api/glasses/${glassesId}`)
       .then((selectedGlasses) => dispatch(fetchSingleGlasses(selectedGlasses.data)))
       .catch(console.error)
+
+export const getSearchGlasses = (searchName, searchColor, searchMaterial) =>
+  dispatch =>{
+    let uri = `/api/glasses?${searchName ? 'name='+searchName : ''}&${searchColor ? 'color='+searchColor : ''}&${searchMaterial ? 'material='+searchMaterial : ''}`
+    axios.get(uri)
+        .then((glasses) => dispatch(fetchSearchGlasses(glasses.data)))
+        .catch(console.error)
+    }
 
 export default reducer
