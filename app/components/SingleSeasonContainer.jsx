@@ -13,7 +13,7 @@ class SingleSeasonContainer extends React.Component {
     const seasons = ['', 'winter', 'spring', 'summer', 'fall']
 
     return (
-    <div className="container-fluid center-block"> {/* why isn't this centering?*/}
+    <div className="container-fluid center-block">
       <h1 style={{textAlign: 'center', marginBottom: '40px', fontFamily: 'Raleway, sans-serif', fontSize: '75px', color: '#3d5c5c' }}>{seasons[+this.props.selectedSeason]}</h1>
       <div className="col-xs-12">
         {
