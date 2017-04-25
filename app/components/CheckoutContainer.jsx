@@ -23,7 +23,8 @@ function CheckoutContainer(props) {
       }
       <li className="list-group-item">Total Price: ${props.order.glasses && props.order.glasses.reduce((totalPrice, glasses) => {
         return totalPrice + glasses.price / 100
-      }, 0)}</li>
+
+      }, 10.94)}</li>
       </ul>
       <hr />
       <form className="form-group col-lg-3" onSubmit={completeOrder}>
