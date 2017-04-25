@@ -42,6 +42,7 @@ function ReviewContainer(props) {
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
+        <label className="pull-right" style={{margin: '6px'}}>Rating:</label>
       </form>
     </div>
   )
