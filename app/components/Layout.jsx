@@ -27,7 +27,7 @@ class Layout extends React.Component {
       <div>
         <nav className="navbar navbar-default" style={{color: '#fff652'}}>
           <div className="container-fluid">
-             <a href="/"><img src="https://i.imgur.com/B3tbqwX.png" className="img-responsive center-block"height="300" /></a>
+             <Link to="/"><img src="https://i.imgur.com/B3tbqwX.png" className="img-responsive center-block"height="300" /></Link>
             <div className="navbar-header" >
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span className="sr-only">Toggle navigation</span>
@@ -42,17 +42,17 @@ class Layout extends React.Component {
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quick Links <span className="caret"></span></a>
                   <ul className="dropdown-menu">
-                    <li><a href="http://localhost:1337/glasses/season/1">Winter Collection</a></li>
-                    <li><a href="http://localhost:1337/glasses/season/2">Spring Collection</a></li>
-                    <li><a href="http://localhost:1337/glasses/season/3">Summer Collection</a></li>
-                    <li><a href="http://localhost:1337/glasses/season/4">Fall Collection</a></li>
+                    <li><Link to="http://localhost:1337/glasses/season/1">Winter Collection</Link></li>
+                    <li><Link to="http://localhost:1337/glasses/season/2">Spring Collection</Link></li>
+                    <li><Link to="http://localhost:1337/glasses/season/3">Summer Collection</Link></li>
+                    <li><Link to="http://localhost:1337/glasses/season/4">Fall Collection</Link></li>
                     <li role="separator" className="divider"></li>
-                    <li><a href="#">Your Account</a></li>
+                    <li><Link to="#">Your Account</Link></li>
                     <li role="separator" className="divider"></li>
                     <li role="separator" className="divide4"></li>
-                    <li><a href="/">Home</a></li>
+                    <li><Link to="/">Home</Link></li>
                     <li role="separator" className="divide4"></li>
-                    <li><a href="/">About Us</a></li>
+                    <li><Link to="/">About Us</Link></li>
                   </ul>
                 </li>
               </ul>
