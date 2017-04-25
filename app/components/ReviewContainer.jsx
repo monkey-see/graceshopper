@@ -14,21 +14,26 @@ function ReviewContainer(props) {
   }
   function addAllReviews(review) {
     return (
-      <div className="text-right" key={review.id}>
-        <h5 key={review.id}>"{review.text}" - {review.user.name} (Rating: {review.rating})</h5>
-      </div>
+      <ul className="list-group" key={review.id}>
+        <li className="list-group-item" key={review.id}>"{review.text}" - {review.user.name}
+        <img className="float-left" src="http://i.imgur.com/yikZKmh.png" width={20 * review.rating} style={{position: 'absolute', height: 20}} />
+        <img className="float-left" src="http://i.imgur.com/oCvicxF.png" width={100} style={{position: 'absolute', height: 20}} />
+        </li>
+      </ul>
     )
   }
 
   return (
     <div className="col-lg-12" style={{paddingBottom: 30}}>
       <hr />
+      <h2>Reviews</h2>
       {
         (props.reviews) ? props.reviews.map(addAllReviews) : null
       }
       <hr />
-      <form className="col-lg-6 pull-right" id="review-form" onSubmit={submitReview}>
-        <textarea className="form-control" name="reviewText" form="review-form" placeholder="Enter Review Here" style={{marginBottom: 10}}></textarea>
+      <h4>Add a Review</h4>
+      <form className="col-lg-6 pull-left" id="review-form" onSubmit={submitReview}>
+        <textarea className="form-control" name="reviewText" form="review-form" placeholder="Enter Review Here" style={{marginBottom: 10, height: 120}}></textarea>
         <input type="submit" className="btn btn-warning pull-right" value="Add Review" />
         <select className="form-control pull-right" name="rating" style={{width: 40, marginRight: 5}}>
           <option value="1">1</option>

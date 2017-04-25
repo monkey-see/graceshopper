@@ -28,9 +28,11 @@ function SingleGlasses(props) {
         <h1>{name}</h1>
         <h6>{quantity} in stock</h6>
         <h3>{description}</h3>
-        <h5>Color: {color}</h5>
-        <h5>Material: {material}</h5>
-        <h5>Price: ${price / 100}</h5>
+        <ul className="list-group">
+          <li className="list-group-item">Color: {color}</li>
+          <li className="list-group-item">Material: {material}</li>
+          <li className="list-group-item">Price: ${price / 100}</li>
+        </ul>
         {/* can only add 1 pair of the same glasses at a time, to be fixed later */}
         <button className="btn btn-success" onClick={addToCart}>Add to Cart</button>
       </div>
