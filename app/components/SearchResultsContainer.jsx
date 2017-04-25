@@ -1,24 +1,24 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateOrderInDB} from '../reducers/orders'
+import {getSearchGlasses} from '../reducers/glasses'
 import ReviewContainer from './ReviewContainer'
-//props.allGlasses is an array of objects
-//allGlasses.color ""
-//allGlasses.id #
-//allGlasses.image "" url
-//allGlasses.name ""
-//allGlasses.price
-//allGlasses.seasonId
+import {Link} from 'react-router'
+
 function SearchResults(props) {
 
   return (
-    <div>
-      <h2 style={{fontFamily: 'Raleway, sans-serif'}}>Showing all results for {props.location.query.searchParams}</h2>
+    <div className="container-fluid center-block">
+      <h2 style={{ textAlign: 'center', marginBottom: '40px', fontFamily: 'Raleway, sans-serif', fontSize: '35px', color: '#3d5c5c' }}>Showing all search results</h2>
       {
-
-        props.allGlasses.map((glasses) => {
-          return <p key={glasses.id}>{glasses.image}</p>
+        props.searchResultGlasses.map(glasses => {
+          return (
+            <div key={glasses.id} className="col-xs-12 thumb center-block">
+              <Link to={`/glasses/${glasses.id}`}><img src={glasses.image} className="img-responsive center-block" style={{height: '100px'}} ></img></Link>
+              <Link to={`/glasses/${glasses.id}`} className="col-xs-12" style={{fontFamily: 'Raleway, sans-serif', color: '#3d5c5c', textAlign: 'center', fontSize: '20px'}}>{glasses.name}</Link>
+            </div>
+          )
         })
+
       }
     </div>
 
@@ -26,11 +26,11 @@ function SearchResults(props) {
 }
 
 export default connect(function mapStateToProps(state) {
-  return {allGlasses: state.glasses.allGlasses}
+  return {searchResultGlasses: state.glasses.searchResultGlasses}
 }, function mapDispatchToProps(dispatch) {
   return {
-    // updateOrder: (orderId, glassesIdArr) => {   dispatch(updateOrderInDB(orderId,
-    // glassesIdArr)) }, getReviews: (glassesId) => {
-    // dispatch(getSingleGlassesReviews(glassesId)) }
+    findGlasses: (searchName, searchColor, searchMaterial) => {
+      dispatch(getSearchGlasses(searchName, searchColor, searchMaterial))
+    }
   }
 })(SearchResults)

@@ -3,10 +3,11 @@ import React from 'react'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 import {render} from 'react-dom'
 import {connect, Provider, onEnter} from 'react-redux'
-import {getSingleGlasses, getGlasses} from './reducers/glasses'
+import {getSingleGlasses, getGlasses, getSearchGlasses} from './reducers/glasses'
 import {setSeason} from './reducers/seasons'
 import {createOrderInDB} from './reducers/orders'
 import {getSingleGlassesReviews} from './reducers/reviews'
+
 
 import store from './store'
 
@@ -53,7 +54,7 @@ render(
         <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={CheckoutContainer} />
         <Route path="/success" component={Success} />
-        <Route path="/results" component={SearchResultsContainer} />
+        <Route path="/results" component={SearchResultsContainer}/>
         {/*
         <Route path="/checkout" component={CheckoutContainer} />
         <Route path="/signup" component={SignupContainer} />
