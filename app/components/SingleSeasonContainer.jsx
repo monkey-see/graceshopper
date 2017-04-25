@@ -7,7 +7,6 @@ import {connect} from 'react-redux'
 
 class SingleSeasonContainer extends React.Component {
   render() {
-    console.log(this.props)
     const filtered = this.props.glasses.allGlasses.filter(glasses => (glasses.season_id === +this.props.selectedSeason))
     return (
       <div>

@@ -7,8 +7,10 @@ const Glasses = db.model('glasses');
 const router = require('express').Router();
 
 router.param('glassesId', (req, res, next, glassesId) => {
+  
   Glasses.findById(glassesId)
     .then(foundGlasses => {
+  
       req.glasses = foundGlasses;
       next()
     })
@@ -18,14 +20,15 @@ router.param('glassesId', (req, res, next, glassesId) => {
 // Create:
 // create a review
 
-router.post('/', (req, res, next) => {
+router.post('/:glassesId', (req, res, next) => {
   Review.create({
     text: req.body.text,
-    rating: req.body.rating,
+    rating: req.body.rating
   })
     .then(createdReview => {
+      
       createdReview.setUser(req.body.userId)
-      createdReview.setGlass(req.body.glassesId)
+      createdReview.setGlass(req.params.glassesId)
       res.status(200).send(createdReview)
     })
     .catch(next)
@@ -33,13 +36,32 @@ router.post('/', (req, res, next) => {
 
 // Read:
 // get all reviews for a pair of glasses
-router.get('/', (req, res, next) => {
-  Review.findAll()
-    .then(reviewsArr => {
+
+router.get('/:glassesId', (req, res, next) => {
+  
+  Review.findAll({
+    where:{
+      glass_id: req.params.glassesId
+    }
+    })
+    .then(reviewsArr => {    
       res.status(200).send(reviewsArr)
     })
     .catch(next)
 })
+
+
+// router.get('/', (req, res, next) => {
+//   Review.findAll({
+//     where:{
+//       glass_id: req.glasses.id
+//     }
+//     })
+//     .then(reviewsArr => {
+//       res.status(200).send(reviewsArr)
+//     })
+//     .catch(next)
+// })
 
 
 // tbd: get all reviews by a user (if we end up adding a user profile page)
