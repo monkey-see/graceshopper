@@ -32,6 +32,12 @@ export const updateOrderInDB = (id, glassesIdArr) => dispatch => {
     .catch(console.error)
 }
 
+export const processOrder = (id, status) => dispatch => {
+  axios.put(`/api/orders/${id}`, {status: status})
+    .then(() => dispatch(updateOrder({})))
+    .catch(console.error)
+}
+
 // reducer
 
 const setOrderReducer = (state = {}, action) => {

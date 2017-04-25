@@ -2,6 +2,7 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
+import {Link} from 'react-router'
 
 import Login from './Login'
 import WhoAmI from './WhoAmI'
@@ -16,7 +17,8 @@ class Layout extends React.Component {
       <div>
         <nav className="navbar navbar-default">
           <div className="container-fluid">
-            <div className="navbar-header">
+             <img src="https://i.imgur.com/B3tbqwX.png" className="img-responsive center-block"height="300" />
+            <div className="navbar-header" style={{color: '#fff652'}}>
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar"></span>
@@ -49,8 +51,10 @@ class Layout extends React.Component {
                 <button type="submit" className="btn btn-default">Submit</button>
               </form>
               <ul className="nav navbar-nav navbar-right">
+                <li><Link to="/cart">Cart ({this.props.order.glasses ? this.props.order.glasses.length : 0})</Link></li>
                 <li> {this.props.user ? <WhoAmI/> : <Login/>} </li>
               </ul>
+
             </div>
           </div>
         </nav>
@@ -63,7 +67,10 @@ class Layout extends React.Component {
 
 export default connect(
   function mapStateToProps(state) {
-    return {user: state.auth}
+    return {
+      user: state.auth,
+      order: state.order
+    }
   },
   function mapDispatchToProps() {
     return {}
