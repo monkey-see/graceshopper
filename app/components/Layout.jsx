@@ -27,7 +27,7 @@ class Layout extends React.Component {
       <div>
         <nav className="navbar navbar-default" style={{color: '#fff652'}}>
           <div className="container-fluid">
-             <img src="https://i.imgur.com/B3tbqwX.png" className="img-responsive center-block"height="300" />
+             <Link to="/"><img src="https://i.imgur.com/B3tbqwX.png" className="img-responsive center-block"height="300" /></Link>
             <div className="navbar-header" >
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span className="sr-only">Toggle navigation</span>
@@ -35,22 +35,24 @@ class Layout extends React.Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="/">Monkey See</a>
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li className="active"><a href="#">Link <span className="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
+
                 <li className="dropdown">
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filter By Price <span className="caret"></span></a>
+                  <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quick Links <span className="caret"></span></a>
                   <ul className="dropdown-menu">
-                    <li><a href="#">$0- $100</a></li>
-                    <li><a href="#">$101- $150</a></li>
-                    <li><a href="#">$150- $200</a></li>
+                    <li><Link to="http://localhost:1337/glasses/season/1">Winter Collection</Link></li>
+                    <li><Link to="http://localhost:1337/glasses/season/2">Spring Collection</Link></li>
+                    <li><Link to="http://localhost:1337/glasses/season/3">Summer Collection</Link></li>
+                    <li><Link to="http://localhost:1337/glasses/season/4">Fall Collection</Link></li>
                     <li role="separator" className="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><Link to="#">Your Account</Link></li>
                     <li role="separator" className="divider"></li>
-                    <li><a href="#">One more separated link</a></li>
+                    <li role="separator" className="divide4"></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li role="separator" className="divide4"></li>
+                    <li><Link to="/">About Us</Link></li>
                   </ul>
                 </li>
               </ul>
