@@ -14,7 +14,7 @@ export const setSingleGlassesReview = singleReview => ({
 
 const defaultState = {
   reviews: [],
-  singleReview:{}
+  singleReview: {}
 }
 
 const reducer = (state= [], action) => {
@@ -22,11 +22,11 @@ const reducer = (state= [], action) => {
 
   switch (action.type) {
   case FETCH_ALL_REVIEWS:
-    newState.reviews = action.allReviews 
+    newState.reviews = action.allReviews
     break
 
   case SET_SINGLE_REVIEWS:
-	newState.reviews = [...newState.reviews, action.singleReview]
+    newState.reviews = [...newState.reviews, action.singleReview]
     break
   default:
     return state
@@ -44,7 +44,7 @@ export const getSingleGlassesReviews = (glassesId) =>
 
 export const addSingleGlassesReview = (glassesId, review, rating, userId) =>
   dispatch =>
-    axios.post(`/api/reviews/${glassesId}`,{text:review , rating, userId})
+    axios.post(`/api/reviews/${glassesId}`, {text: review, rating, userId})
       .then((newReview) => dispatch(setSingleGlassesReview(newReview.data)))
       .catch(console.error)
 
