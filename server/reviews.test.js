@@ -13,11 +13,11 @@ describe('/api/reviews', () => {
   // afterEach('Clear the tables', () => db.truncate({ cascade: true }))
   beforeEach('Create new associations', () => {
     Review.create({
-      text: "awful",
+      text: 'awful',
       rating: 1
     })
     Review.create({
-      text: "great",
+      text: 'great',
       rating: 2
     })
     User.create({
@@ -26,12 +26,12 @@ describe('/api/reviews', () => {
       password: '12345'
     })
     Glasses.create({
-      name: "gucci",
-      color: "black",
-      material: "metal",
+      name: 'gucci',
+      color: 'black',
+      material: 'metal',
       price: 300,
-      description: "only for cool people",
-      image: "https://dt66ikht21gkc.cloudfront.net/img/imgocchiali/2/img_art_GG0037O_001_A.jpg",
+      description: 'only for cool people',
+      image: 'https://dt66ikht21gkc.cloudfront.net/img/imgocchiali/2/img_art_GG0037O_001_A.jpg',
       quantity: 22
     })
   }
@@ -42,7 +42,7 @@ describe('/api/reviews', () => {
         request(app)
           .post(`/api/reviews`)
           .send({
-            text: "amazing",
+            text: 'amazing',
             rating: 3,
             userId: 1,
             glassesId: 1

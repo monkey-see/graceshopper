@@ -19,7 +19,7 @@ describe('/api/orders', () => {
   )
 
   describe('GET /', () =>
-      it.only('sends all orders', () =>
+      it('sends all orders', () =>
         request(app)
           .get(`/api/orders`)
           .expect(200)

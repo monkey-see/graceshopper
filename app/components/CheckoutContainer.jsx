@@ -11,24 +11,20 @@ function CheckoutContainer(props) {
   }
   return (
     <div className="col-xs-12" >
-      <h1 style={{color: '#3d5c5c',marginLeft:'35px'}}>Checkout</h1>
+      <h1 style={{color: '#3d5c5c', marginLeft: '35px'}}>Checkout</h1>
       <div className="row col-xs-12">
-        <ul className="col-xs-6 center" style={{margin: '0 auto',marginLeft:'20px'}}>
+        <ul className="col-xs-6 center" style={{margin: '0 auto', marginLeft: '20px'}}>
         {
-          props.order.glasses && props.order.glasses.map(glasses => {
-            return (
+          props.order.glasses && props.order.glasses.map(glasses => (
               <li key={glasses.id} className="list-group-item">{glasses.name}: ${glasses.price / 100}</li>
             )
-          })
+          )
         }
-        <li className="list-group-item">Total Price: ${props.order.glasses && props.order.glasses.reduce((totalPrice, glasses) => {
-          return totalPrice + glasses.price / 100
-
-        }, 10.94)}</li>
+        <li className="list-group-item">Total Price: ${props.order.glasses && props.order.glasses.reduce((totalPrice, glasses) => totalPrice + glasses.price / 100, 10.94)}</li>
         </ul>
       </div>
       <hr />
-      <form className="form-group row" style={{marginLeft:"20px"}} onSubmit={completeOrder}>
+      <form className="form-group row" style={{marginLeft: '20px'}} onSubmit={completeOrder}>
         <div className="col-xs-6">
           <h5>Personal Info</h5>
           <input className="form-control" placeholder="First Name" name="first-name" />

@@ -1,12 +1,16 @@
 import { combineReducers } from 'redux'
-import {setSeasonReducer} from './seasons'
+import authReducer from './auth'
+import glassesReducer from './glasses'
+import seasonReducer from './seasons'
+import orderReducer from './orders'
+import reviewReducer from './reviews'
 
 const rootReducer = combineReducers({
-  auth: require('./auth').default,
-  glasses: require('./glasses').default,
-  selectedSeason: setSeasonReducer,
-  order: require('./orders').default,
-  reviews: require('./reviews').default
+  auth: authReducer,
+  glasses: glassesReducer,
+  selectedSeason: seasonReducer,
+  order: orderReducer,
+  reviews: reviewReducer
 })
 
 export default rootReducer

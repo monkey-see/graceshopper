@@ -16,9 +16,9 @@ module.exports = db => db.define('reviews', {
       isIn: [[1, 2, 3, 4, 5]]
     }
   }
-});
+})
 
 module.exports.associations = (Review, {User, Glasses}) => {
-  Review.belongsTo(User);
-  Review.belongsTo(Glasses);
-};
+  Review.belongsTo(User)
+  Review.belongsTo(Glasses)
+}

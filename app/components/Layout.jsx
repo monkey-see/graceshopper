@@ -21,7 +21,6 @@ class Layout extends React.Component {
     browserHistory.push('/results')
   }
 
-
   render() {
     return (
       <div>
@@ -73,7 +72,6 @@ class Layout extends React.Component {
           </div>
         </nav>
         {this.props.children ? this.props.children : <h2>Home Page</h2>}
-        {/*<Footer />*/}
       </div>
     )
   }

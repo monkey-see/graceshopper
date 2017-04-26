@@ -9,8 +9,8 @@ module.exports = db => db.define('seasons', {
     type: STRING,
     allowNull: false
   }
-});
+})
 
 module.exports.associations = (Season, {Glasses}) => {
-  Season.hasMany(Glasses);
-};
+  Season.hasMany(Glasses)
+}

@@ -4,7 +4,6 @@ const FIND_OR_CREATE_ORDER = 'FIND_OR_CREATE_ORDER'
 const UPDATE_ORDER = 'UPDATE_ORDER'
 
 // sync action creators
-// redundant? difference between createOrder/updateOrder and createOrderInDB/updateOrderInDB
 
 export const createOrder = order => ({
   type: FIND_OR_CREATE_ORDER,

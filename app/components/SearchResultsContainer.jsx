@@ -5,7 +5,6 @@ import ReviewContainer from './ReviewContainer'
 import {Link} from 'react-router'
 
 function SearchResults(props) {
-
   return (
     <div className="container-fluid center-block">
       <h2 style={{ textAlign: 'center', marginBottom: '40px', fontFamily: 'Raleway, sans-serif', fontSize: '35px', color: '#3d5c5c' }}>Showing all search results</h2>
@@ -18,10 +17,8 @@ function SearchResults(props) {
             </div>
           )
         })
-
       }
     </div>
-
   )
 }
 

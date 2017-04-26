@@ -4,7 +4,6 @@
 const bcrypt = require('bcryptjs')
     , {STRING, VIRTUAL, FLOAT, TEXT, INTEGER, ENUM} = require('sequelize')
 
-
 module.exports = db => db.define('glasses', {
   name: {
     type: STRING,
@@ -45,9 +44,7 @@ module.exports = db => db.define('glasses', {
     averageRating: function() {
       return this.getReviews()
         .then(reviews => {
-          const totalReviewCount = reviews.reduce((totalReviewCount, reviewInstance) => {
-            return totalReviewCount + reviewInstance.rating
-          }, 0)
+          const totalReviewCount = reviews.reduce((totalReviewCount, reviewInstance) => totalReviewCount + reviewInstance.rating, 0)
           return totalReviewCount / reviews.length
         })
     }

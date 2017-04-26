@@ -33,7 +33,6 @@ function SingleGlasses(props) {
           <li className="list-group-item">Material: {material}</li>
           <li className="list-group-item">Price: ${price / 100}</li>
         </ul>
-        {/* can only add 1 pair of the same glasses at a time, to be fixed later */}
         <button className="btn btn-success" onClick={addToCart}>Add to Cart</button>
       </div>
       <ReviewContainer />

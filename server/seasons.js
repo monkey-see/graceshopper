@@ -1,9 +1,9 @@
 'use strict'
 
-const db = require('APP/db');
-const Season = db.model('seasons');
-const Glasses = db.model('glasses');
-const router = require('express').Router();
+const db = require('APP/db')
+const Season = db.model('seasons')
+const Glasses = db.model('glasses')
+const router = require('express').Router()
 
 // Create:
 // add a season
@@ -29,7 +29,7 @@ router.get('/', (req, res, next) => {
 
 // get one season
 router.get('/:id', (req, res, next) => {
-  const seasonId = req.params.id;
+  const seasonId = req.params.id
 
   Season.findById(seasonId)
     .then(foundSeason => {
@@ -39,7 +39,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.get('/:id/glasses', (req, res, next) => {
-  const season_id = req.params.id;
+  const season_id = req.params.id
 
   Glasses.findAll({
     where: {season_id}
@@ -56,7 +56,7 @@ router.get('/:id/glasses', (req, res, next) => {
 // Delete:
 // delete a single season instance
 router.delete('/:id', (req, res, next) => {
-  const seasonId = req.params.id;
+  const seasonId = req.params.id
 
   Season.findById(seasonId)
     .then(foundSeason => {
@@ -69,4 +69,4 @@ router.delete('/:id', (req, res, next) => {
 
 })
 
-module.exports = router;
+module.exports = router

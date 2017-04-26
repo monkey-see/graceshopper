@@ -11,7 +11,7 @@ export const setSeason = season => ({
 
 // reducer
 
-export const setSeasonReducer = (state = '', action) => {
+const setSeasonReducer = (state = '', action) => {
   switch (action.type) {
   case SET_SEASON:
     return action.selectedSeason
@@ -20,3 +20,4 @@ export const setSeasonReducer = (state = '', action) => {
   }
 }
 
+export default setSeasonReducer

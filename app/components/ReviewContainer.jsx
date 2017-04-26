@@ -1,4 +1,3 @@
-
 import React from 'react'
 import {connect} from 'react-redux'
 import {addSingleGlassesReview} from '../reducers/reviews'
@@ -27,9 +26,7 @@ function ReviewContainer(props) {
     <div className="col-lg-12" style={{paddingBottom: 30}}>
       <hr />
       <h2>Reviews</h2>
-      {
-        (props.reviews) ? props.reviews.map(addAllReviews) : null
-      }
+      {props.reviews ? props.reviews.map(addAllReviews) : null}
       <hr />
       <h4>Add a Review</h4>
       <form className="col-lg-6 pull-left" id="review-form" onSubmit={submitReview}>

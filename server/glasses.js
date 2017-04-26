@@ -1,13 +1,13 @@
 'use strict'
 
-const db = require('APP/db');
-const Glasses = db.model('glasses');
-const router = require('express').Router();
+const db = require('APP/db')
+const Glasses = db.model('glasses')
+const router = require('express').Router()
 
 
 
-//Create:
-//add glasses to database
+// Create:
+// add glasses to database
 router.post('/', (req, res, next) => {
   Glasses.create(req.body)
     .then(createdGlasses => {
@@ -16,7 +16,7 @@ router.post('/', (req, res, next) => {
     .catch(next)
 })
 
-//view all glasses
+// view all glasses
 router.get('/', (req, res, next) => {
   Glasses.findAll({
     where: req.query
@@ -25,11 +25,11 @@ router.get('/', (req, res, next) => {
       res.status(200).send(glassesArr)
     })
     .catch(next)
-});
+})
 
-//get single glasses
+// get single glasses
 router.get('/:id', (req, res, next) => {
-  const glassesId = req.params.id;
+  const glassesId = req.params.id
   Glasses.findById(glassesId)
     .then(foundGlasses => {
       res.status(200).send(foundGlasses)
@@ -37,12 +37,12 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
-//Update:
-//update price on glasses
-//update colour/material
-//update stock
+// Update:
+// update price on glasses
+// update colour/material
+// update stock
 router.put('/:id', (req, res, next) => {
-  const glassesId = req.params.id;
+  const glassesId = req.params.id
 
   Glasses.findById(glassesId)
     .then(foundGlasses => {
@@ -54,19 +54,19 @@ router.put('/:id', (req, res, next) => {
     .catch(next)
 })
 
-//Delete:
-//delete whole glasses instance
+// Delete:
+// delete whole glasses instance
 router.delete('/:id', (req, res, next) => {
-  const glassesId = req.params.id;
+  const glassesId = req.params.id
 
   Glasses.findById(glassesId)
     .then(foundGlasses => {
       return foundGlasses.destroy()
     })
     .then(() => {
-      res.sendStatus(200);
+      res.sendStatus(200)
     })
-    .catch(next);
-});
+    .catch(next)
+})
 
-module.exports = router;
+module.exports = router

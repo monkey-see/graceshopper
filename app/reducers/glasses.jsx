@@ -61,11 +61,11 @@ export const getSingleGlasses = (glassesId) =>
       .catch(console.error)
 
 export const getSearchGlasses = (searchName, searchColor, searchMaterial) =>
-  dispatch =>{
+  dispatch => {
     let uri = `/api/glasses?${searchName ? 'name='+searchName : ''}&${searchColor ? 'color='+searchColor : ''}&${searchMaterial ? 'material='+searchMaterial : ''}`
     axios.get(uri)
         .then((glasses) => dispatch(fetchSearchGlasses(glasses.data)))
         .catch(console.error)
-    }
+  }
 
 export default reducer

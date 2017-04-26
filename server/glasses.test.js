@@ -11,25 +11,24 @@ describe('/api/glasses', () => {
   afterEach('Clear the tables', () => db.truncate({ cascade: true }))
   beforeEach('Create new glasses', () => {
     Glasses.create({
-      name: "gucci",
-      color: "black",
-      material: "metal",
+      name: 'gucci',
+      color: 'black',
+      material: 'metal',
       price: 300,
-      description: "only for cool people",
-      image: "https://dt66ikht21gkc.cloudfront.net/img/imgocchiali/2/img_art_GG0037O_001_A.jpg",
+      description: 'only for cool people',
+      image: 'https://dt66ikht21gkc.cloudfront.net/img/imgocchiali/2/img_art_GG0037O_001_A.jpg',
       quantity: 22
     })
     Glasses.create({
-      name: "rayban",
-      color: "silver",
-      material: "plastic",
+      name: 'rayban',
+      color: 'silver',
+      material: 'plastic',
       price: 172,
-      description: "only for marcos",
-      image: "https://dt66ikht21gkc.cloudfront.net/img/imgocchiali/2/img_art_GG0037O_001_A.jpg",
+      description: 'only for marcos',
+      image: 'https://dt66ikht21gkc.cloudfront.net/img/imgocchiali/2/img_art_GG0037O_001_A.jpg',
       quantity: 7
     })
-  }
-  )
+  })
 
   describe('GET /', () =>
       it('sends back all glasses', () =>
@@ -53,27 +52,4 @@ describe('/api/glasses', () => {
           })
       )
     )
-
-  // describe('POST', () =>
-  //     it('creates a user', () =>
-  //       request(app)
-  //         .post('/api/users')
-  //         .send({
-  //           email: 'beth@secrets.org',
-  //           password: '12345'
-  //         })
-  //         .expect(201))
-
-  //     it('redirects to the user it just made', () =>
-  //       request(app)
-  //         .post('/api/users')
-  //         .send({
-  //           email: 'eve@interloper.com',
-  //           password: '23456',
-  //         })
-  //         .redirects(1)
-  //         .then(res => expect(res.body).to.contain({
-  //           email: 'eve@interloper.com'
-  //         })))
-  //   })
 })
